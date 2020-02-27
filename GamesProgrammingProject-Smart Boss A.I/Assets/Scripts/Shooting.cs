@@ -6,8 +6,8 @@ public class Shooting : MonoBehaviour
 {
     public Transform FireLocation;
     public GameObject LaserPrefab;
-    public float LaserSpeed = 20.0f;
-    public float LaserDamage = 20.0f;
+
+
 
     void Start()
     {
@@ -24,8 +24,6 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject Laser = Instantiate(LaserPrefab, FireLocation.position, FireLocation.rotation); //Spawning in the bullet.
-        Rigidbody2D LaserRb = Laser.GetComponent<Rigidbody2D>(); //Creating the Rigidbody.
-        LaserRb.AddForce(FireLocation.up * LaserSpeed, ForceMode2D.Impulse); //Adding force to the laser.
+        Instantiate(LaserPrefab, FireLocation.position, FireLocation.rotation); //Spawning in the bullet. //GameObject Laser = 
     }
 }

@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     //Core
     public Rigidbody2D PlayerRB;
     Vector2 PlayerMovementVector;
-    private MiniBoss1Script MiniBoss1;
 
     //Stats
     public float Movespeed = 5.0f;
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        MiniBoss1 = GetComponent<MiniBoss1Script>();
 
     }
 
@@ -38,11 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Collision2D Working");
-        if (col.gameObject.tag == ("Enemy"))
+
+        if (col.gameObject.tag == "Enemy")
         {
-            Health -= MiniBoss1.Damage;
-            Debug.Log("I damaged the player");
+            Health -= col.transform.GetComponent<MiniBoss1Script>().Damage;
+          //  Debug.Log("I damaged the player");
             
         }
     }
@@ -50,4 +48,3 @@ public class PlayerMovement : MonoBehaviour
 
 //Future assets to use
 //https://assetstore.unity.com/packages/2d/environments/animated-2d-coins-22097 - coins for drops
-//https://assetstore.unity.com/packages/2d/environments/robot-shooting-game-sprite-free-93902 - boss 1 enemy assets
