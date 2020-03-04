@@ -8,7 +8,7 @@ public class LaserCollisions : MonoBehaviour
     Transform Parent;
 
     //Stats
-    public float LaserSpeed = 20.0f;
+    public float LaserSpeed = 25.0f;
     public float LaserDamage = 5.0f;
     void Start()
     {

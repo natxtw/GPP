@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     //UI
     public Slider HealthBar;
+    public Text HealthText; //doesn't work rn
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerMovementVector.y = Input.GetAxisRaw("Vertical");
 
         HealthBar.value = Health;
+        HealthText.text = Health.ToString();
     }
 
     void FixedUpdate()

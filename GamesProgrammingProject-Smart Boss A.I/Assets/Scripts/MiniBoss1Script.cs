@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniBoss1Script : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class MiniBoss1Script : MonoBehaviour
     private Vector2 Movement;
     private Shooting ShootingScript;
     public bool MiniBoss1isAlive = true;
+    public Slider HealthBar;
 
     //Stats
     public float MoveSpeed = 1.5f;
-    public float MaxHealth = 100.0f;
+    public float MaxHealth = 250.0f;
     public float Health;
     public float Damage = 20.0f;
 
@@ -26,13 +28,17 @@ public class MiniBoss1Script : MonoBehaviour
     public float SpawnTimer = 2.0f;
     public bool StopSpawning = false;
     private int SpawnID = 0;
+
+    //TODO:
+    //Seperate Minions HP & Damage
+
     void Start()
     {
         RB = this.GetComponent<Rigidbody2D>();
         ShootingScript = GetComponent<Shooting>();
         Health = MaxHealth;
         Player = GameObject.Find("Player").transform;
- 
+
     }
 
     void Update()
@@ -40,6 +46,13 @@ public class MiniBoss1Script : MonoBehaviour
         if (MiniBoss1isAlive == true)
         {
             MiniBossOneFeatures();
+            HealthBar.value = Health;
+            
+        }
+        else
+        {
+            HealthBar.enabled = false; //doesn't work 
+
         }
     }
 
@@ -86,7 +99,7 @@ public class MiniBoss1Script : MonoBehaviour
                     if (SpawnTimer <= 0)
                     {
                         SpawnMinions(MinionsSpawnLocation);
-
+                        Health = Health + 50; //optional
                         StopSpawning = true;
                         StartCoroutine(ResetStopSpawning());
                     }
@@ -96,7 +109,7 @@ public class MiniBoss1Script : MonoBehaviour
         }
         if (Health <= MaxHealth / 2)//Feature 1
         {
-            MoveSpeed = 2.5f;
+            MoveSpeed = 4.5f;
         }
         if (Health <= 0)
         {
@@ -109,7 +122,6 @@ public class MiniBoss1Script : MonoBehaviour
     {
         GameObject cloneA =  Instantiate(gameObject, minionTransform.position, minionTransform.rotation); //Spawning the minion
         cloneA.transform.localScale = new Vector3(2, 2, 1);
-
         SpawnID++;
         cloneA.name = "Minion " + SpawnID;
  

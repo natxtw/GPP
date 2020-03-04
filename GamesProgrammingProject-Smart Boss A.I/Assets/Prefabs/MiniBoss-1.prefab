@@ -159,13 +159,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   MiniBoss1isAlive: 1
+  HealthBar: {fileID: 0}
   MoveSpeed: 1.5
   MaxHealth: 100
   Health: 0
   Damage: 20
-  MinionsSpawnLocation: {fileID: 0}
-  MinionsSpawnLocationTwo: {fileID: 0}
-  MinionPrefab: {fileID: 0}
+  MinionsSpawnLocation: {fileID: 7911009813693761815}
+  MinionsSpawnLocationTwo: {fileID: 7591346803456495039}
+  MinionPrefab: {fileID: 5743447865136131901}
   MinionMaxHealth: 100
   MinionDamage: 5
   SpawnTimer: 2
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   MiniBoss1isAlive: 1
+  HealthBar: {fileID: 0}
   MoveSpeed: 5
   MaxHealth: 100
   Health: 100
