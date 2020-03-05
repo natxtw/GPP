@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     //Core
@@ -15,20 +15,18 @@ public class PlayerMovement : MonoBehaviour
 
     //UI
     public Slider HealthBar;
-    public Text HealthText; //doesn't work rn
+    public TextMeshProUGUI HealthText;
 
     void Start()
     {
-
+        HealthBar.value = Health;
+        HealthText.text = Health.ToString();
     }
 
     void Update()
     {
         PlayerMovementVector.x = Input.GetAxisRaw("Horizontal");
         PlayerMovementVector.y = Input.GetAxisRaw("Vertical");
-
-        HealthBar.value = Health;
-        HealthText.text = Health.ToString();
     }
 
     void FixedUpdate()
@@ -41,9 +39,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (col.gameObject.tag == "Enemy")
         {
-            Health -= col.transform.GetComponent<MiniBoss1Script>().Damage;
-          //  Debug.Log("I damaged the player");
-            
+            Health -= col.transform.GetComponent<BaseEnemy>().GetDamage();
+
+            HealthBar.value = Health;
+            HealthText.text = Health.ToString();
+
         }
     }
 }

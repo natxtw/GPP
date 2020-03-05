@@ -7,8 +7,6 @@ public class Shooting : MonoBehaviour
     public Transform FireLocation;
     public GameObject LaserPrefab;
 
-
-
     void Start()
     {
         
@@ -25,5 +23,6 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         Instantiate(LaserPrefab, FireLocation.position, FireLocation.rotation); //Spawning in the bullet. //GameObject Laser = 
+        LaserPrefab.GetComponent<LaserCollisions>().Name = gameObject.name;
     }
 }

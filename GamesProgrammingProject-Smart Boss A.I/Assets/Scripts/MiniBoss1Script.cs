@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class MiniBoss1Script : MonoBehaviour
+public class MiniBoss1Script : BaseEnemy
 {
     //Core
-    public Transform Player;
-    Rigidbody2D RB;
-    private Vector2 Movement;
     private Shooting ShootingScript;
-    public bool MiniBoss1isAlive = true;
+    public TextMeshProUGUI HealthText;
     public Slider HealthBar;
 
-    //Stats
-    public float MoveSpeed = 1.5f;
-    public float MaxHealth = 250.0f;
-    public float Health;
-    public float Damage = 20.0f;
 
     //Feature
     public Transform MinionsSpawnLocation;
@@ -34,19 +27,31 @@ public class MiniBoss1Script : MonoBehaviour
 
     void Start()
     {
-        RB = this.GetComponent<Rigidbody2D>();
         ShootingScript = GetComponent<Shooting>();
-        Health = MaxHealth;
-        Player = GameObject.Find("Player").transform;
-
+        ApplyValues();
     }
-
+    void ApplyValues()
+    {
+        MaxDamage = 5;
+        Damage = MaxDamage;
+        MaxHealth = 100;
+        CurrentHealth = MaxHealth;
+        MaxMovementSpeed = 2;
+        MovementSpeed = MaxMovementSpeed;
+        Player = GameObject.Find("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
+        Movement = new Vector2();
+        HealthText.text = CurrentHealth.ToString();
+    }
     void Update()
     {
+       
         if (MiniBoss1isAlive == true)
         {
             MiniBossOneFeatures();
-            HealthBar.value = Health;
+
+            EnemyMovement();
+            HealthBar.value = CurrentHealth;
             
         }
         else
@@ -58,40 +63,25 @@ public class MiniBoss1Script : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FollowPlayer(Movement);
-       
-    }
-
-    void Die()
-    {
-        Destroy(gameObject);
-        MiniBoss1isAlive = false;
-    }
-
-    void FollowPlayer(Vector2 direction)
-    {
-        RB.MovePosition((Vector2)transform.position + (direction * MoveSpeed * Time.deltaTime));
+        FollowPlayer(Movement, MovementSpeed);
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Bullet")
         {
-            Health -= col.transform.GetComponent<LaserCollisions>().LaserDamage;
+            RecieveDamage(col.transform.GetComponent<LaserCollisions>().LaserDamage);
+            HealthText.text = CurrentHealth.ToString();
             Destroy(col.gameObject);
         }
     }
 
     void MiniBossOneFeatures()
     {
-        Vector3 direction = Player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        RB.rotation = angle;
-        direction.Normalize();
-        Movement = direction;
+      
         if (gameObject.name == "MiniBoss-1")
         {
-            if (Health <= MaxHealth / 4)//Feature 2
+            if (CurrentHealth <= MaxHealth / 4)//Feature 2
             {
                 if (!StopSpawning)
                 {
@@ -99,7 +89,7 @@ public class MiniBoss1Script : MonoBehaviour
                     if (SpawnTimer <= 0)
                     {
                         SpawnMinions(MinionsSpawnLocation);
-                        Health = Health + 50; //optional
+                        SpawnMinions(MinionsSpawnLocationTwo);
                         StopSpawning = true;
                         StartCoroutine(ResetStopSpawning());
                     }
@@ -107,20 +97,17 @@ public class MiniBoss1Script : MonoBehaviour
 
             }
         }
-        if (Health <= MaxHealth / 2)//Feature 1
+        if (CurrentHealth <= MaxHealth / 2)//Feature 1
         {
-            MoveSpeed = 4.5f;
+            MovementSpeed = 4.5f;
         }
-        if (Health <= 0)
-        {
-            Die();
-        }
+
 
     }
 
     void SpawnMinions(Transform minionTransform)
     {
-        GameObject cloneA =  Instantiate(gameObject, minionTransform.position, minionTransform.rotation); //Spawning the minion
+        GameObject cloneA =  Instantiate(MinionPrefab, minionTransform.position, minionTransform.rotation); //Spawning the minion
         cloneA.transform.localScale = new Vector3(2, 2, 1);
         SpawnID++;
         cloneA.name = "Minion " + SpawnID;
