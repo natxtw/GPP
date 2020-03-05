@@ -13,7 +13,6 @@ public class LaserCollisions : MonoBehaviour
     public float LaserDamage = 5.0f;
     void Start()
     {
-        Debug.Log("Name " + Name);
         Parent = GameObject.Find(Name).transform;
         gameObject.transform.SetParent(Parent);
         GetComponent<Rigidbody2D>().AddForce(Parent.GetChild(0).up * LaserSpeed, ForceMode2D.Impulse); //Adding force to the laser.
