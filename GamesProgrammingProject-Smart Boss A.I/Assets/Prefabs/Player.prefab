@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2957516430857823726}
   - component: {fileID: 2957516430857823722}
   - component: {fileID: 2957516430857823727}
+  - component: {fileID: 2710477445522194605}
+  - component: {fileID: 2778331092610030649}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2957516430857823721}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.883, y: 0.91158485, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -104,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2957516430857823726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.015796661, y: -0.07898545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4453125, y: 1.6171875}
+  m_Size: {x: 1.0235748, y: 1.4592166}
   m_EdgeRadius: 0
 --- !u!114 &2957516430857823722
 MonoBehaviour:
@@ -144,7 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRB: {fileID: 2957516430857823723}
+  Cam: {fileID: 0}
   Movespeed: 6
+  Health: 100
+  HealthBar: {fileID: 0}
+  HealthText: {fileID: 0}
 --- !u!114 &2957516430857823727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +163,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b84605b7e381c246817e3c368080a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2710477445522194605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957516430857823721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd787df2d99236f44b32b500caf49002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireLocation: {fileID: 2957516430909867521}
+  LaserPrefab: {fileID: 3768284952088001631, guid: 96393ae50b7234b458bcb31a8b8f9b29,
+    type: 3}
+--- !u!114 &2778331092610030649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957516430857823721}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220da954a7b69b84bad920aace9ea5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirePoint: {fileID: 2957516430909867521}
+  BulletPrefab: {fileID: 3768284952088001631, guid: 96393ae50b7234b458bcb31a8b8f9b29,
+    type: 3}
+  bulletforce: 20
 --- !u!1 &2957516430909867520
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2957516430909867520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23, y: 0.78, z: -13.799601}
+  m_LocalPosition: {x: 0.23, y: 1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2957516430857823725}

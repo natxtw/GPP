@@ -9,8 +9,9 @@ public class LaserCollisions : MonoBehaviour
     public string Name;
 
     //Stats
-    public float LaserSpeed = 25.0f;
+    public float LaserSpeed = 50.0f;
     public float LaserDamage = 5.0f;
+
     void Start()
     {
         Parent = GameObject.Find(Name).transform;
@@ -23,9 +24,4 @@ public class LaserCollisions : MonoBehaviour
         Destroy(gameObject);
         //can play some effects if i find some.
     }
-
-
- 
-
-
 }

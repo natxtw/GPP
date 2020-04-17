@@ -93,6 +93,7 @@ Transform:
   m_Children:
   - {fileID: 7911009813693761815}
   - {fileID: 7591346803456495039}
+  - {fileID: 4513352240342580840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -156,13 +157,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650e293f4f7732341b8e76edf37a6292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  MiniBoss1isAlive: 1
-  HealthBar: {fileID: 0}
-  MoveSpeed: 1.5
   MaxHealth: 100
-  Health: 0
+  CurrentHealth: 0
+  MaxDamage: 0
   Damage: 20
+  MaxMovementSpeed: 0
+  MovementSpeed: 0
+  RetretingDistance: 0
+  StoppingDistance: 0
+  MaxRangedDamage: 0
+  RangedDamage: 0
+  MiniBoss1isAlive: 1
+  MiniBoss2isAlive: 1
+  Player: {fileID: 0}
+  Projectile: {fileID: 0}
+  StartTimeBetweenShots: 0
+  ShootingPos: {fileID: 0}
+  HealthText: {fileID: 0}
+  HealthBar: {fileID: 0}
   MinionsSpawnLocation: {fileID: 7911009813693761815}
   MinionsSpawnLocationTwo: {fileID: 7591346803456495039}
   MinionPrefab: {fileID: 7232166539525715738, guid: a581ed18f9352d7449ae23c566c10469,
@@ -218,3 +230,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.73}
   m_EdgeRadius: 0
+--- !u!1 &6527042543091355943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4513352240342580840}
+  m_Layer: 0
+  m_Name: ShootingPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4513352240342580840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527042543091355943}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.406, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2546916661030846136}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

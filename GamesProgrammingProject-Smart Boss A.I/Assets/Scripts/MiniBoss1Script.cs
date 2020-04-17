@@ -34,10 +34,13 @@ public class MiniBoss1Script : BaseEnemy
     {
         MaxDamage = 5;
         Damage = MaxDamage;
+
         MaxHealth = 100;
         CurrentHealth = MaxHealth;
+
         MaxMovementSpeed = 2;
         MovementSpeed = MaxMovementSpeed;
+
         Player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         Movement = new Vector2();
@@ -57,6 +60,7 @@ public class MiniBoss1Script : BaseEnemy
         else
         {
             HealthBar.enabled = false; //doesn't work 
+            //MiniBoss2isAlive = true;
 
         }
     }
@@ -99,7 +103,7 @@ public class MiniBoss1Script : BaseEnemy
         }
         if (CurrentHealth <= MaxHealth / 2)//Feature 1
         {
-            MovementSpeed = 4.5f;
+            MovementSpeed = 6.5f;
         }
 
 
