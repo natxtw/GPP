@@ -157,7 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650e293f4f7732341b8e76edf37a6292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  HealthText: {fileID: 0}
+  HealthBar: {fileID: 0}
+  MaxHealth: 0
   CurrentHealth: 0
   MaxDamage: 0
   Damage: 20
@@ -167,22 +169,36 @@ MonoBehaviour:
   StoppingDistance: 0
   MaxRangedDamage: 0
   RangedDamage: 0
+  Movement: {x: 0, y: 0}
   MiniBoss1isAlive: 1
   MiniBoss2isAlive: 1
+  rb: {fileID: 0}
   Player: {fileID: 0}
   Projectile: {fileID: 0}
+  TimeBetweenShots: 0
   StartTimeBetweenShots: 0
   ShootingPos: {fileID: 0}
-  HealthText: {fileID: 0}
-  HealthBar: {fileID: 0}
+  xMaxRange: 1
+  xMinRange: 1
+  yMaxRange: 1
+  yMinRange: 1
+  JustTeleported: 0
   MinionsSpawnLocation: {fileID: 7911009813693761815}
   MinionsSpawnLocationTwo: {fileID: 7591346803456495039}
   MinionPrefab: {fileID: 7232166539525715738, guid: a581ed18f9352d7449ae23c566c10469,
     type: 3}
   MinionMaxHealth: 100
   MinionDamage: 5
-  SpawnTimer: 2
+  SpawnTimer: 1.5
   StopSpawning: 0
+  AmountOfShotsFiredMB1: 0
+  AmountOfShotsFiredMB1Feature1: 0
+  AmountOfShotsFiredMB1Feature2: 0
+  AmountOfHealthRemainingMB1: 0
+  AmountOfShotsFiredMB2: 0
+  AmountOfShotsFiredMB2Feature1: 0
+  AmountOfShotsFiredMB2Feature2: 0
+  AmountOfHealthRemainingMB2: 0
 --- !u!50 &5743447865136131903
 Rigidbody2D:
   serializedVersion: 4

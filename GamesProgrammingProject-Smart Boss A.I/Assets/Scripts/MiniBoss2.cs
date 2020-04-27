@@ -7,12 +7,6 @@ using TMPro;
 
 public class MiniBoss2 : BaseEnemy
 {
-    //Core
-    private Shooting ShootingScript;
-    public TextMeshProUGUI HealthText;
-    public Slider HealthBar;
-
-
     void Start()
     {
         ShootingScript = GetComponent<Shooting>();
@@ -31,7 +25,7 @@ public class MiniBoss2 : BaseEnemy
         }
         else
         {
-            HealthBar.enabled = false; //doesn't work 
+            HealthBar.enabled = false; 
 
         }
 

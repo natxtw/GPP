@@ -13,23 +13,41 @@ public class PlayerMovement : MonoBehaviour
     Vector2 PlayerMovementVector;
     public Camera Cam;
     Vector2 MousePos;
-    private EnemyProjectile EnemyProj;
+    //private BaseEnemy BaseEnemyScript;
 
     //Stats
     public float Movespeed = 5.0f;
     public float Health = 100.0f;
     private float NegativeHealth = 0.0f;
+    private float Score = 0;
+
+    //Shooting
+    public Transform FireLocation;
+    public GameObject LaserPrefab;
 
     //UI
     public Slider HealthBar;
     public TextMeshProUGUI HealthText;
 
+    /*
+    //FeatureProgression
+    //mini-boss1
+    public int AmountOfShotsFiredMB1;
+    public int AmountOfHealthRemainingMB1;
+    //mini-boss2
+    public int AmountOfShotsFiredMB2;
+    public int AmountOfHealthRemainingMB2;
+    */
+
+
     void Start()
     {
         HealthBar.value = Health;
         HealthText.text = Health.ToString();
-        EnemyProj = GetComponent<EnemyProjectile>();
+        //BaseEnemyScript = GameObject.FindObjectOfType<BaseEnemy>();
+
     }
+
 
     void Update()
     {
@@ -38,12 +56,17 @@ public class PlayerMovement : MonoBehaviour
 
         MousePos = Cam.ScreenToWorldPoint(Input.mousePosition);
 
-        //if() // if MiniBoss1isAlive = fasle ... if key pressed = E ... load level 2 scene
+        if (Input.GetMouseButtonDown(0)) //or GetButtonDown("Fire1")
+        {
+            Shoot();
+        }
 
-        if(Health <= NegativeHealth)
+        if (Health <= NegativeHealth)
         {
             PlayerDeath();
         }
+
+        //if mini-boss1 is dead, advancelevel(); //This is done in the BaseEnemy script
     }
 
     void FixedUpdate()
@@ -58,6 +81,15 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("This should not appaer");
         SceneManager.LoadScene("Lose Screen");
+    }
+
+    void AdvanceLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+           SceneManager.LoadScene("Level 2");
+           Debug.Log("I pressed E" + "Loading Level 2 is working");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -80,6 +112,12 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("RangeDamage should have applied");
         }
 
+    }
+
+    void Shoot()
+    {
+        Instantiate(LaserPrefab, FireLocation.position, FireLocation.rotation); //Spawning in the bullet. //GameObject Laser = 
+        LaserPrefab.GetComponent<LaserCollisions>().Name = gameObject.name;
     }
 }
 

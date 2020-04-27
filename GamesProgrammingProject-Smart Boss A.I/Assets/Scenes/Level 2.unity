@@ -62352,7 +62352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1471351642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62409,12 +62409,67 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471351641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7, y: -57.34, z: -4.9765625}
+  m_LocalPosition: {x: 7.88, y: -50.39, z: -4.9765625}
   m_LocalScale: {x: 12.448, y: 12.448, z: 12.448}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1554778797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1302892862153305186, guid: 174cc164452f0bb44beba4a0d2df9e1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302892863087470957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1554778798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554778797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f03076ea9204f346ab188b53fc27e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthText: {fileID: 0}
+  HealthBar: {fileID: 0}
+  MaxHealth: 0
+  CurrentHealth: 0
+  MaxDamage: 0
+  Damage: 0
+  MaxMovementSpeed: 0
+  MovementSpeed: 0
+  RetretingDistance: 0
+  StoppingDistance: 0
+  MaxRangedDamage: 0
+  RangedDamage: 0
+  Movement: {x: 0, y: 0}
+  MiniBoss1isAlive: 1
+  MiniBoss2isAlive: 0
+  rb: {fileID: 0}
+  Player: {fileID: 0}
+  Projectile: {fileID: 0}
+  TimeBetweenShots: 0
+  StartTimeBetweenShots: 0
+  ShootingPos: {fileID: 0}
+  xMaxRange: 0
+  xMinRange: 0
+  yMaxRange: 0
+  yMinRange: 0
+  JustTeleported: 0
+  MinionsSpawnLocation: {fileID: 0}
+  MinionsSpawnLocationTwo: {fileID: 0}
+  MinionPrefab: {fileID: 0}
+  MinionMaxHealth: 100
+  MinionDamage: 5
+  SpawnTimer: 2
+  StopSpawning: 0
+  AmountOfShotsFiredMB1: 0
+  AmountOfHealthRemainingMB1: 0
+  AmountOfShotsFiredMB2: 0
+  AmountOfHealthRemainingMB2: 0
 --- !u!1 &1658734434
 GameObject:
   m_ObjectHideFlags: 0
@@ -72020,19 +72075,19 @@ PrefabInstance:
       objectReference: {fileID: 707316587}
     - target: {fileID: 1504855312, guid: 174cc164452f0bb44beba4a0d2df9e1b, type: 3}
       propertyPath: yMaxRange
-      value: -57
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1504855312, guid: 174cc164452f0bb44beba4a0d2df9e1b, type: 3}
       propertyPath: xMaxRange
-      value: -33
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1504855312, guid: 174cc164452f0bb44beba4a0d2df9e1b, type: 3}
       propertyPath: xMinRange
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1504855312, guid: 174cc164452f0bb44beba4a0d2df9e1b, type: 3}
       propertyPath: yMinRange
-      value: -33
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 1149358172778763102, guid: 174cc164452f0bb44beba4a0d2df9e1b,
         type: 3}

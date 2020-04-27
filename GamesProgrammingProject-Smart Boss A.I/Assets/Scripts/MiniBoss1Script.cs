@@ -3,33 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MiniBoss1Script : BaseEnemy
 {
-    //Core
-    private Shooting ShootingScript;
-    public TextMeshProUGUI HealthText;
-    public Slider HealthBar;
-
-
-    //Feature
-    public Transform MinionsSpawnLocation;
-    public Transform MinionsSpawnLocationTwo;
-    public GameObject MinionPrefab;
-    public float MinionMaxHealth = 100.0f;
-    public float MinionDamage = 5.0f;
-    public float SpawnTimer = 2.0f;
-    public bool StopSpawning = false;
-    private int SpawnID = 0;
-
-    //TODO:
-    //Seperate Minions HP & Damage
-
     void Start()
     {
         ShootingScript = GetComponent<Shooting>();
         ApplyValues();
     }
+
     void ApplyValues()
     {
         MaxDamage = 5;
@@ -48,7 +31,6 @@ public class MiniBoss1Script : BaseEnemy
     }
     void Update()
     {
-       
         if (MiniBoss1isAlive == true)
         {
             MiniBossOneFeatures();
@@ -57,12 +39,15 @@ public class MiniBoss1Script : BaseEnemy
             HealthBar.value = CurrentHealth;
             
         }
-        else
-        {
-            HealthBar.enabled = false; //doesn't work 
-            //MiniBoss2isAlive = true;
 
+        if(MiniBoss1isAlive == false)
+        {
+            HealthBar.enabled = false; //doesn't work //Does it really matter?
+            Debug.Log("I Should not show");
         }
+
+        Debug.Log(AmountOfShotsFiredMB1Feature1);
+        Debug.Log(AmountOfShotsFiredMB1Feature2);
     }
 
     private void FixedUpdate()
@@ -82,45 +67,30 @@ public class MiniBoss1Script : BaseEnemy
 
     void MiniBossOneFeatures()
     {
-      
         if (gameObject.name == "MiniBoss-1")
         {
-            if (CurrentHealth <= MaxHealth / 4)//Feature 2
+            if (CurrentHealth <= MaxHealth)//Feature 1
             {
-                if (!StopSpawning)
-                {
-                    SpawnTimer -= Time.deltaTime;
-                    if (SpawnTimer <= 0)
-                    {
-                        SpawnMinions(MinionsSpawnLocation);
-                        SpawnMinions(MinionsSpawnLocationTwo);
-                        StopSpawning = true;
-                        StartCoroutine(ResetStopSpawning());
-                    }
-                }
+                MinionFeature();
 
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AmountOfShotsFiredMB1Feature1++;
+                    Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); //already works
+                }
+            }
+
+            if (CurrentHealth <= MaxHealth / 2)//Feature 2
+            {
+                MoveSpeedBoost();
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AmountOfShotsFiredMB1Feature2++;
+                    Debug.Log("Feature2 Score: " + AmountOfShotsFiredMB1Feature2); //already works
+                }
             }
         }
-        if (CurrentHealth <= MaxHealth / 2)//Feature 1
-        {
-            MovementSpeed = 6.5f;
-        }
-
-
     }
 
-    void SpawnMinions(Transform minionTransform)
-    {
-        GameObject cloneA =  Instantiate(MinionPrefab, minionTransform.position, minionTransform.rotation); //Spawning the minion
-        cloneA.transform.localScale = new Vector3(2, 2, 1);
-        SpawnID++;
-        cloneA.name = "Minion " + SpawnID;
- 
-    }
-    IEnumerator ResetStopSpawning()
-    {
-        yield return new WaitForSeconds(2);
-        StopSpawning = false;
-        SpawnTimer = 2f;
-    }
 }
