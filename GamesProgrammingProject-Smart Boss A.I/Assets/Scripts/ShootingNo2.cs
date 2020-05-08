@@ -8,7 +8,7 @@ public class ShootingNo2 : MonoBehaviour
     public GameObject BulletPrefab;
     public float bulletforce = 20.0f;
 
-    // Update is called once per frame
+    //unused script, an attempt at fixing a bug related to the shooting mechanic
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

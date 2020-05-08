@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    //Script moved into player.
     public Transform FireLocation;
     public GameObject LaserPrefab;
 

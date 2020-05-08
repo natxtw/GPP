@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c5dc7eed74bc148b2277f279d04532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthText: {fileID: 0}
+  HealthBar: {fileID: 0}
   MaxHealth: 250
   CurrentHealth: 250
   MaxDamage: 10
@@ -152,14 +154,36 @@ MonoBehaviour:
   StoppingDistance: 20
   MaxRangedDamage: 0
   RangedDamage: 0
+  Movement: {x: 0, y: 0}
   MiniBoss1isAlive: 0
   MiniBoss2isAlive: 1
+  FinalBossisAlive: 1
+  rb: {fileID: 0}
   Player: {fileID: 0}
   Projectile: {fileID: 0}
+  TimeBetweenShots: 0
   StartTimeBetweenShots: 0
   ShootingPos: {fileID: 0}
-  HealthText: {fileID: 0}
-  HealthBar: {fileID: 0}
+  xMaxRange: 0
+  xMinRange: 0
+  yMaxRange: 0
+  yMinRange: 0
+  JustTeleported: 0
+  MinionsSpawnLocation: {fileID: 0}
+  MinionsSpawnLocationTwo: {fileID: 0}
+  MinionPrefab: {fileID: 0}
+  MinionMaxHealth: 100
+  MinionDamage: 5
+  SpawnTimer: 2
+  StopSpawning: 0
+  AmountOfShotsFiredMB1: 0
+  AmountOfShotsFiredMB1Feature1: 0
+  AmountOfShotsFiredMB1Feature2: 0
+  AmountOfHealthRemainingMB1: 0
+  AmountOfShotsFiredMB2: 0
+  AmountOfShotsFiredMB2Feature1: 0
+  AmountOfShotsFiredMB2Feature2: 0
+  AmountOfHealthRemainingMB2: 0
 --- !u!1 &7863656344407837289
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7863656344407837289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.57, y: -0.030014794, z: -0.85641}
+  m_LocalPosition: {x: 0.644, y: -0.030014794, z: -0.85641}
   m_LocalScale: {x: 0.23311108, y: 0.23311108, z: 0.23311108}
   m_Children: []
   m_Father: {fileID: 1302892862153305212}

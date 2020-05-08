@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoseScene : MonoBehaviour
 {
+    //Menu script
     public void GoBackToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");

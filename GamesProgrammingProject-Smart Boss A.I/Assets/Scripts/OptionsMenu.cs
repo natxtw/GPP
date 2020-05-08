@@ -5,16 +5,18 @@ using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
-    public AudioMixer AudioMix;
+    //Options menu
+    public AudioMixer AudioMix; 
     public void SetVolume(float volume)
     {
         AudioMix.SetFloat("volume", volume);
     }
 
-    public void GraphicsQuality(int QualityIndex)
+    public void GraphicsQuality(int QualityIndex) 
     {
         QualitySettings.SetQualityLevel(QualityIndex);
         Debug.Log(QualityIndex);
+        //controls graphic quality, doesn't really serve a purpose for my graphics at this point.
     }
 
     public void SetFullScreen(bool IsFullScreen)

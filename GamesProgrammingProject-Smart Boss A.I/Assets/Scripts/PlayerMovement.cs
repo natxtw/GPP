@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 PlayerMovementVector;
     public Camera Cam;
     Vector2 MousePos;
-    //private BaseEnemy BaseEnemyScript;
 
     //Stats
     public float Movespeed = 5.0f;
@@ -29,22 +28,11 @@ public class PlayerMovement : MonoBehaviour
     public Slider HealthBar;
     public TextMeshProUGUI HealthText;
 
-    /*
-    //FeatureProgression
-    //mini-boss1
-    public int AmountOfShotsFiredMB1;
-    public int AmountOfHealthRemainingMB1;
-    //mini-boss2
-    public int AmountOfShotsFiredMB2;
-    public int AmountOfHealthRemainingMB2;
-    */
 
-
-    void Start()
+    void Start()//Linking to the UI
     {
         HealthBar.value = Health;
         HealthText.text = Health.ToString();
-        //BaseEnemyScript = GameObject.FindObjectOfType<BaseEnemy>();
 
     }
 
@@ -66,10 +54,9 @@ public class PlayerMovement : MonoBehaviour
             PlayerDeath();
         }
 
-        //if mini-boss1 is dead, advancelevel(); //This is done in the BaseEnemy script
     }
 
-    void FixedUpdate()
+    void FixedUpdate()//rotating the player based of the direction the mouse is looking
     {
         PlayerRB.MovePosition(PlayerRB.position + PlayerMovementVector * Movespeed * Time.fixedDeltaTime);
         Vector2 LookDir = MousePos - PlayerRB.position;
@@ -77,13 +64,12 @@ public class PlayerMovement : MonoBehaviour
         PlayerRB.rotation = angle;
     }
 
-    void PlayerDeath()
+    void PlayerDeath()//Player dies
     {
-        //Debug.Log("This should not appaer");
         SceneManager.LoadScene("Lose Screen");
     }
 
-    void AdvanceLevel()
+    void AdvanceLevel()//Test feature, can remove later, if need be
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -92,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)//Collider to die
     {
         if (col.gameObject.tag == "Enemy")
         {
@@ -103,18 +89,17 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("I should have lost health");
         }
 
-        if (col.gameObject.tag == "123")
+        if (col.gameObject.tag == "EnemyProjectile")
         {
-            Health -= col.transform.GetComponent<BaseEnemy>().GetRangeDamage();
-
+            Health -= (col.transform.GetComponent<BaseEnemy>().GetRangeDamage() + 5);
             HealthBar.value = Health;
             HealthText.text = Health.ToString();
-            Debug.Log("RangeDamage should have applied");
+            Debug.Log("I should have lost health");
         }
 
     }
 
-    void Shoot()
+    void Shoot()//Shoot script that was moved into the player to fix a bug
     {
         Instantiate(LaserPrefab, FireLocation.position, FireLocation.rotation); //Spawning in the bullet. //GameObject Laser = 
         LaserPrefab.GetComponent<LaserCollisions>().Name = gameObject.name;

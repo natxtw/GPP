@@ -11,6 +11,8 @@ public class BaseEnemy : MonoBehaviour
     protected Shooting ShootingScript;
     public TextMeshProUGUI HealthText;
     public Slider HealthBar;
+    
+    
 
     //Stats
     [SerializeField] protected float MaxHealth;
@@ -29,6 +31,7 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected Vector2 Movement;
     [SerializeField] public bool MiniBoss1isAlive = true;
     [SerializeField] public bool MiniBoss2isAlive = false;
+    [SerializeField] public bool FinalBossisAlive = true;
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] public Transform Player;
 
@@ -47,7 +50,6 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField] protected bool JustTeleported;
 
     //Minions
-    //TODO: Seperate Minions HP & Damage
     public Transform MinionsSpawnLocation;
     public Transform MinionsSpawnLocationTwo;
     public GameObject MinionPrefab;
@@ -64,12 +66,12 @@ public class BaseEnemy : MonoBehaviour
     public int AmountOfShotsFiredMB1;
     public int AmountOfShotsFiredMB1Feature1;
     public int AmountOfShotsFiredMB1Feature2;
-    public int AmountOfHealthRemainingMB1;
+    public int AmountOfHealthRemainingMB1; //unused yet
     //mini-boss2
     public int AmountOfShotsFiredMB2;
     public int AmountOfShotsFiredMB2Feature1;
     public int AmountOfShotsFiredMB2Feature2;
-    public int AmountOfHealthRemainingMB2;
+    public int AmountOfHealthRemainingMB2; //unused yet
     
 
     void Start()
@@ -79,7 +81,12 @@ public class BaseEnemy : MonoBehaviour
 
     void Update()
     {
-       
+        /*
+        Debug.Log(AmountOfShotsFiredMB1Feature1);
+        Debug.Log(AmountOfShotsFiredMB1Feature2);
+        Debug.Log(AmountOfShotsFiredMB2Feature1);
+        Debug.Log(AmountOfShotsFiredMB2Feature2);
+        */
     }
 
     public void SetValues()
@@ -130,7 +137,12 @@ public class BaseEnemy : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
 
-            if (gameObject.name == "MiniBoss-2")
+            if (gameObject.name == "Mini-Boss2")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+
+            if (gameObject.name == "Final-Boss")
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -223,10 +235,7 @@ public class BaseEnemy : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //AmountOfShotsFiredMB1Feature1 = AmountOfShotsFiredMB1Feature1 + 10; //Alternatively int++ and then create a multiplyer later on.
-                    AmountOfShotsFiredMB1Feature1++;
-                    //Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); //already works
-                    Debug.Log(CurrentHealth);
+                    AmountOfShotsFiredMB1Feature1++;                  
                 }
             }
 
@@ -236,14 +245,8 @@ public class BaseEnemy : MonoBehaviour
                 {
                     AmountOfShotsFiredMB1Feature2++;
                     AmountOfShotsFiredMB1Feature1--;
-                    //Debug.Log("Feature2 Score: " + AmountOfHealthRemainingMB2);
                 }
             }
         }
-    }
-
-    public void TrackingAddition()
-    {
-
     }
 }

@@ -6,7 +6,7 @@ public class CameraFollowsPlayer : MonoBehaviour
 {
     public GameObject PlayerToFollow;
     public Vector3 offset = new Vector3(0, 0, 1);
-    void FixedUpdate()
+    void FixedUpdate() //Follows the player position
     {
         if(PlayerToFollow)
         {

@@ -9,7 +9,7 @@ public class MinionControl : BaseEnemy
         SetValues();
         ApplyValues();
     }
-    void ApplyValues()
+    void ApplyValues() //Applies stats
     {
         MaxDamage = 5;
         Damage = MaxDamage;
@@ -21,19 +21,19 @@ public class MinionControl : BaseEnemy
         rb = GetComponent<Rigidbody2D>();
         Movement = new Vector2();
     }
-    // Update is called once per frame
-    private void FixedUpdate()
+
+    private void FixedUpdate() //Follows the player
     {
         FollowPlayer(Movement, MovementSpeed);
     }
-    private void Update()
+    private void Update() //If the boss is not alive, stop moving, you're not powered/controlled anymore.
     {
         if (MiniBoss1isAlive == true)
         {
             EnemyMovement();
         }
     }
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col) //Damage collider
     {
         if (col.gameObject.tag == "Bullet")
         {

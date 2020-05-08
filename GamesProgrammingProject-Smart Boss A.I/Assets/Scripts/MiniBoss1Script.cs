@@ -10,7 +10,7 @@ public class MiniBoss1Script : BaseEnemy
     void Start()
     {
         ShootingScript = GetComponent<Shooting>();
-        ApplyValues();
+        ApplyValues(); //Setting values on start
     }
 
     void ApplyValues()
@@ -24,30 +24,28 @@ public class MiniBoss1Script : BaseEnemy
         MaxMovementSpeed = 2;
         MovementSpeed = MaxMovementSpeed;
 
-        Player = GameObject.Find("Player").transform;
+        Player = GameObject.Find("Player").transform; //Finds the player
         rb = GetComponent<Rigidbody2D>();
         Movement = new Vector2();
-        HealthText.text = CurrentHealth.ToString();
+        HealthText.text = CurrentHealth.ToString(); //Links to the UI
     }
     void Update()
     {
-        if (MiniBoss1isAlive == true)
+        if (MiniBoss1isAlive == true) //Starts the miniboss
         {
             MiniBossOneFeatures();
-
             EnemyMovement();
-            HealthBar.value = CurrentHealth;
+            HealthBar.value = CurrentHealth; //Links to the onscreen UI
             
         }
 
         if(MiniBoss1isAlive == false)
         {
-            HealthBar.enabled = false; //doesn't work //Does it really matter?
-            Debug.Log("I Should not show");
+            HealthBar.enabled = false;            
         }
 
-        Debug.Log(AmountOfShotsFiredMB1Feature1);
-        Debug.Log(AmountOfShotsFiredMB1Feature2);
+        //Debug.Log(AmountOfShotsFiredMB1Feature1); //Scoring tests
+        //Debug.Log(AmountOfShotsFiredMB1Feature2); //Scoring tests
     }
 
     private void FixedUpdate()
@@ -65,7 +63,7 @@ public class MiniBoss1Script : BaseEnemy
         }
     }
 
-    void MiniBossOneFeatures()
+    void MiniBossOneFeatures() //Miniboss controller, controlls movement & calls function for features
     {
         if (gameObject.name == "MiniBoss-1")
         {
@@ -73,10 +71,10 @@ public class MiniBoss1Script : BaseEnemy
             {
                 MinionFeature();
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0)) //Scoring system
                 {
                     AmountOfShotsFiredMB1Feature1++;
-                    Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); //already works
+                    //Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); 
                 }
             }
 
@@ -84,10 +82,10 @@ public class MiniBoss1Script : BaseEnemy
             {
                 MoveSpeedBoost();
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0)) //Scoring system
                 {
                     AmountOfShotsFiredMB1Feature2++;
-                    Debug.Log("Feature2 Score: " + AmountOfShotsFiredMB1Feature2); //already works
+                    //Debug.Log("Feature2 Score: " + AmountOfShotsFiredMB1Feature2); 
                 }
             }
         }

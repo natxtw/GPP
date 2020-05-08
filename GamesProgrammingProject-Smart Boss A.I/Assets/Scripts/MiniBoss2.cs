@@ -75,15 +75,28 @@ public class MiniBoss2 : BaseEnemy
         {
             if (MiniBoss2isAlive == true)
             {
-                //RangeAttacks();
+                RangeAttacks();
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    AmountOfShotsFiredMB2Feature1++;
+                    //Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); //already works
+                }
+
                 if (CurrentHealth <= MaxHealth / 2)
                 {
                     if (JustTeleported == false)
                     {
                         Teleportation();
                         StartCoroutine(TeleportingCD());
-                        Debug.Log("I Have teleported");
                         JustTeleported = true;
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        AmountOfShotsFiredMB2Feature1--;
+                        AmountOfShotsFiredMB2Feature2++;
+                        //Debug.Log("Feature1 Score: " + AmountOfShotsFiredMB1Feature1); //already works
                     }
                 }
             }
